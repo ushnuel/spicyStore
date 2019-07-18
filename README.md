@@ -1,2 +1,2 @@
 # spicyStore
-Buy all type of seasoning here
+Buy all types of seasonings here
