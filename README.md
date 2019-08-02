@@ -1,2 +1,2 @@
-# spicyStore
-Buy all types of seasonings here
+## kems meals and spices
+Home of delicious and organic spices
