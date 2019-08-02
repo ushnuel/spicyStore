@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}
+<title>Dashboard | {{ user.username }}</title>
+{% endblock %} {% block color %}
+<style media="screen">
+  body {
+    background: #e7f2f1;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container text-center mt-1">
+  {% for message in messages %}
+  <div class="alert alert-info">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="dashboard-container">
+  <div class="dashboard-column">
+    <div class="welcome-order">
+      <h6>
+        Welcome back: <span class="welcome">@{{ user.username }}</span>
+      </h6>
+      <a href="#order"><h6>My Orders</h6></a>
+    </div>
+  </div>
+
+  <div class="profile-mobile-view">
+    <h6>
+      Welcome: <span class="welcome">@{{ user.username }}</span>
+    </h6>
+
+    <div class="order">
+      <a href="#order" class="btn btn-secondary"><h6>My Orders</h6></a>
+    </div>
+  </div>
+
+  <div class="order-results" id="order">
+    <table class="table table-hover table-bordered text-center">
+      <tr>
+        <th>S/N</th>
+        <th>ORDERS</th>
+      </tr>
+      {% for order in orders %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>
+          {{ order }}
+          <a
+            href="{% url 'shopping_cart:delete_order' order_id=order.id %}"
+            data-ballon="remove this item from cart"
+            class="text-danger"
+            onclick="return confirmDelete();"
+          >
+            <i class="fa fa-trash"></i
+          ></a>
+        </td>
+        <td>{{ order.date_ordered }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %} {% block footer %} {% endblock %}

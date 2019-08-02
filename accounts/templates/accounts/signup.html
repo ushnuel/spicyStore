@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+  <title>Create a free account</title>
+{% endblock %}
+
+{% block content %}
+  <div class="signup">
+    <!-- <h5 class="page">SIGN UP</h5> -->
+    <div class="signup-form">
+      <p><span style="color:blue; font-weight:bold;">CREATE YOUR ACCOUNT</span> <br><br>
+        Welcome to the home of your favourite delicious spicies</p>
+
+        <form method="POST" class="form">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <input type="submit" class="btn btn-primary btn-block btn-fill" value="Create account">
+        </form>
+
+    </div>
+
+  </div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

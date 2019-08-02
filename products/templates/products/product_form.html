@@ -1,0 +1,35 @@
+{% extends "products/product_base.html" %} {% load bootstrap4 %}
+<p></p>
+{% block title%}
+<title>Create a new product</title>
+{% endblock %} {% block color %}
+<style media="screen">
+  body {
+    background: #f4f8fb;
+  }
+</style>
+{% endblock %} {% block product_content %}
+<div class="container text-center mt-1">
+  {% for message in messages %}
+  <div class="alert alert-info">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="container mt-2 product-create-form">
+  <div class="product-form">
+    <form
+      action="{% url 'products:create' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %} {% bootstrap_form form %}
+      {{ form.errors }}
+      <input type="submit" class="btn btn-block btn-success" value="Publish" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

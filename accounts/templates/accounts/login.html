@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+<title>Login to Payment gateway</title>
+{% endblock %}
+
+{% block color %}
+<style media="screen">
+  body {
+    background: #B6DBB3;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page">
+  <h3>KEM SPICY</h3>
+</div>
+
+<div class="login-form">
+  <h4 class="text-center">LOG IN</h4>
+
+  <form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class="btn btn-success btn-block" value="Login into your account">
+  </form>
+</div>
+
+<div class="page">
+  <p>New to KemSpicy Store? <a href="{% url 'accounts:signup' %}">Sign Up</a></p>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

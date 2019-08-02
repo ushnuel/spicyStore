@@ -1,0 +1,71 @@
+{% extends "shopping_cart/shopping_cart_base.html" %} {% load humanize %}
+<p></p>
+{% block title %}
+<title>checkout product</title>
+{% endblock %} {% block color %}
+<style media="screen">
+  body {
+    background: #f4f8fb;
+  }
+</style>
+{% endblock %} {% block shopping_content %}
+<div class="container text-center mt-1">
+  {% for message in messages %}
+  <div class="alert alert-info">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+
+<section>
+  <div class="container order-container">
+    <div class="order-table">
+      <h5>Order Summary</h5>
+      <table class="table table-hover table-bordered text-center table-striped">
+        {% for item in order.get_cart_items %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>
+            <a href="{% url 'products:detail' pk=item.product.id %}">
+              {{ item.product.title }}
+              <p></p
+            ></a>
+          </td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td><strong>Order Total</strong></td>
+          <td>
+            <strong>₦ {{ order.get_cart_total | intcomma }}</strong>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="payment_gateway">
+      <div class="paystack">
+        <form
+          class=""
+          action="{% url 'shopping_cart:paystack_payment'  order_id=order.id %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button type="submit" class="button2">Pay with Paystack</button>
+        </form>
+      </div>
+
+      <div class="ravefutter">
+        <form
+          class=""
+          action="{% url 'shopping_cart:flutter_payment'  order_id=order.id %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button type="submit" class="button1">Pay with Flutterwave</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block footer %} {% endblock %}

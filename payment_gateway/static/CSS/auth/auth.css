@@ -1,0 +1,199 @@
+.login-form {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 55%;
+  margin: 30px auto;
+  padding: 20px;
+}
+.page {
+  margin: 10px auto;
+  text-align: center;
+  width: 60%;
+}
+.page h3 {
+  font-weight: bold;
+  font-family: 'Fugaz One', cursive;
+  color: #60788e;
+}
+.signup {
+  background: rgba(255, 255, 255, 1);
+  width: 65%;
+  margin: 30px auto;
+  padding: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.signup-form {
+  width: 100%;
+  display: inline-flex;
+  padding: 0px;
+}
+.form {
+  width: 70%;
+}
+.signup-form p {
+  padding-right: 20px;
+}
+.dashboard-container {
+  width: 100%;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.dashboard-column {
+  top: 0;
+  left: 0;
+  width: 30%;
+  background: #314455;
+  height: 100vh;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+.welcome-order {
+  margin: 10px;
+}
+.welcome {
+  color: rgb(181, 209, 181);
+}
+.order-results {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.profile-mobile-view {
+  display: none;
+}
+
+.dashboard-column a,
+a:hover,
+a:active {
+  color: lightblue;
+  text-decoration: none;
+}
+.about-us-container, .contact-us-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.contact-us-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+.contact-content{
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+.icon-para p {
+  margin: 2px;
+}
+.email {
+  margin: 10px;
+}
+.about-us-page {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 20px;
+  width: 60%;
+  border-radius: 10px;
+}
+.about-header, .contact-header {
+  display: block;
+  color: #60788e;
+  background: #CBCECE;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.about-content {
+  margin: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+.about-content h5 {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.about-content ul {
+  list-style: none;
+  padding-inline-start: 0;
+  font-size: 19px;
+}
+.about-content p {
+  font-size: 19px;
+}
+.kems {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@media (max-width: 780px) {
+  .create {
+    display: none;
+  }
+  .signup {
+    width: 80%;
+  }
+  .login-form {
+    width: 80%;
+  }
+  .signup-form p {
+    display: none;
+  }
+  .form {
+    width: 100%;
+  }
+  .signup-form {
+    display: block;
+  }
+  .profile-mobile-view {
+    display: flex;
+    padding: 5px;
+    justify-content: space-evenly;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin: 10px 0 10px 0;
+  }
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .dashboard-column {
+    display: none;
+  }
+  .order-results {
+    width: 100%;
+    margin: 0;
+  }
+  .welcome {
+    text-transform: lowercase;
+    color: black;
+  }
+}
+@media (max-width: 500px) {
+  .about-us-page, .contact-us-page {
+    width: 95%;
+  }
+  .about-content ul, .about-content p {
+    font-size: 17px;
+  }
+  .contact-content {
+    flex-direction: column;
+    width: 100%;
+  }
+  .contact-content .icon-para {
+    width: inherit;
+    margin: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.03)
+}
+}

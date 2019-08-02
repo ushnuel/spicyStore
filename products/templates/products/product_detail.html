@@ -1,0 +1,90 @@
+{% extends "products/product_base.html" %} {% load humanize %}
+
+{% block title %}
+<title>Product | {{ product.slug }}</title>
+{% endblock %}
+{% block product_content %}
+<div class="product-table-container">
+  <div class="product-title-img">
+    <h4>{{ product.title }}</h4>
+    <img src="{{ product.image.url }}" alt="Image Removed" />
+  </div>
+
+  <div class="product-table">
+    <table class="table table-hover table-bordered">
+      <tr>
+        <td>Price:</td>
+        <td>₦ {{ product.price | intcomma }}</td>
+      </tr>
+      <tr>
+        <td>Posted:</td>
+        <td>{{ product.created_at }}</td>
+      </tr>
+      <tr>
+        <td>Details:</td>
+        <td rowspan="2">{{ product.description }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="text-product">
+  <div class="text">
+    <h4 class="text-center"><em>Similar Products</em></h4>
+  </div>
+
+  <div class="products-container">
+    {% for product in products %}
+    <div class="products">
+      <img src="{{ product.image.url }}" alt="No Image" />
+
+      <div class="product-details">
+        <a href="{% url 'products:detail' pk=product.pk %}">
+          <strong>
+            <p class="title">{{ product.title | truncatechars:25 }}</p>
+          </strong>
+        </a>
+        <p>
+          <span class="span"><i class="far fa-money-bill-alt"></i></span> ₦
+          {{ product.price | intcomma }}
+        </p>
+        <hr />
+        <div class="button">
+          <button type="button" class="button1">
+            <h6>Delicious</h6>
+          </button>
+          {% if user.is_authenticated %}
+          <p></p>
+          {% if product in user.user_profile.goods.all %}
+          <a href="{% url 'accounts:my_profile' %}">
+            <button type="button" class="button2">
+              <h6>Purchased</h6>
+            </button>
+          </a>
+          {% elif product in current_order_products %}
+          <a href="{% url 'shopping_cart:order_summary' %}">
+            <button type="button" class="button2">
+              <h6>Go to cart</h6>
+            </button>
+          </a>
+          {% else %}
+          <a href="{% url 'shopping_cart:add_to_cart' item_id=product.id %}">
+            <button type="button" class="button2">
+              <h6>Add to cart</h6>
+            </button>
+          </a>
+          {% endif %} {% else %}
+          <a href="{% url 'accounts:login' %}">
+            <button type="button" class="button2">
+              <h6>Buy Now</h6>
+            </button>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

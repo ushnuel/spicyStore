@@ -1,0 +1,35 @@
+.order-container {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.order-table {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 100%;
+}
+.order-table h5 {
+  text-align: center;
+}
+.payment_gateway {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+.paystack {
+  margin: 3px;
+}
+.ravefutter {
+  margin: 3px;
+}
+@media (max-width: 400px) {
+  .payment_gateway {
+    flex-direction: column;
+  }
+}

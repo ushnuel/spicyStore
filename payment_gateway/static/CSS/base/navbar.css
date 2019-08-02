@@ -1,0 +1,159 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 5px 20px;
+  color: white;
+  background: #60788e;
+  height: 63px;
+  width: 100%;
+  z-index: 90;
+}
+
+.toolbar nav {
+  height: 100%;
+}
+.hamburger {
+  display: none;
+}
+.logo h1 {
+  font-family: 'Fugaz One', cursive;
+  text-transform: uppercase;
+  margin-left: 10px;
+  color:#E0E8EF;
+  font-size: 2.9rem;
+}
+.home {
+  height: 100%;
+}
+.logo {
+  height: 100%;
+  display: flex;
+}
+.logo a, .logo img {
+  text-decoration: none;
+  height: 100%;
+}
+.home2 {
+  display: none;
+}
+@media (max-width: 499px) {
+  .hamburger {
+    display: block;
+  }
+  .toolbar {
+    padding: 5px;
+  }
+  .hamburger div {
+    background-color: white;
+    height: 4px;
+    border-radius: 5px;
+    width: 90%;
+  }
+  .hamburger {
+    height: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 38px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .home {
+    display: none;
+  }
+  .home2 {
+    height: 100%;
+    display: block;
+  }
+  .logo h1 {
+    font-family: 'Fugaz One', cursive;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  .home2 a {
+    text-decoration: none;
+  }
+  .navigationitems {
+    display: none;
+  }
+  .desktopView {
+    display: none;
+  }
+}
+.navigationitems {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin: 0;
+  list-style: none;
+}
+
+@media (min-width: 500px) {
+  .navigationitems {
+    flex-flow: row;
+  }
+}
+.navigationitem-side {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+.navigationitem-side li {
+  font-size: 17px;
+  text-transform: capitalize;
+}
+.navigationitem a {
+  text-decoration: none;
+  color: lightblue;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+.cart {
+  background: lightblue;
+  color: black;
+}
+
+.navigationitem a:hover,
+.navigationitem a:active {
+  color: #40a4c9;
+}
+
+@media (min-width: 500px) {
+  .navigationitem {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    margin: 0;
+  }
+
+  .navigationitem a {
+    color: white;
+    border-bottom: 4px solid transparent;
+    height: 100%;
+    padding: 16px 10px;
+  }
+  .navigationitems li {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+  .navigationitem a:hover,
+  .navigationitem a:active,
+  .navigationitem a.active {
+    color: white;
+    background-color: lightblue;
+    border-bottom: 4px solid #40a4c9;
+  }
+}

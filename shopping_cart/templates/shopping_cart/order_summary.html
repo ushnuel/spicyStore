@@ -1,0 +1,81 @@
+{% extends "shopping_cart/shopping_cart_base.html" %} {% load humanize %}
+{% block title %}
+<title>order summary of products</title>
+{% endblock %} {% block color %}
+<style media="screen">
+  body {
+    background: #f4f8fb;
+  }
+</style>
+{% endblock %} {% block shopping_content %}
+<div class="container text-center mt-1">
+  {% for message in messages %}
+  <div class="alert alert-info">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+
+<section>
+  <div class="container order-container">
+    <table class="table table-hover table-bordered text-center table-striped" style="width: 100%;">
+      <tr class="text center">
+        <th>No.</th>
+        <th>Item</th>
+        <th>Price</th>
+      </tr>
+      {% for item in order.get_cart_items %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>
+          {{ item.product.title }}
+          <span>
+            <a href="{% url 'shopping_cart:delete_from_cart' item_id=item.id %}" class="text-danger"
+              onclick="return confirmDelete()">
+              <i class="fa fa-trash"></i>
+            </a>
+          </span>
+        </td>
+        <td>₦ {{ item.product.price | intcomma }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3">You have not added any items yet</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        {% if order.get_cart_total != None%}
+        <td colspan="2"><strong>Order total:</strong></td>
+        <td colspan="1">
+          ₦ <strong> {{ order.get_cart_total | intcomma }}</strong>
+        </td>
+        {% endif %}
+      </tr>
+    </table>
+
+    <div class="payment_gateway">
+      <div class="paystack mb-3">
+        <a href="{% url 'products:all' %}" class="button1">
+          {% if order %} Continue Shopping
+          {% else %} Add items to cart {% endif %}</a>
+      </div>
+
+      <div class="ravefutter">
+        {% if order.get_cart_items %}
+        <a href="{% url 'shopping_cart:checkout' %}" class="button2">
+          Proceed To Checkout</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block script %}
+{{ block.super }}
+<script type="text/javascript">
+  function confirmDelete() {
+    return confirm('Do you want to remove this item from the cart?');
+  }
+</script>
+{% endblock script %} {% block footer %} {% endblock %}

@@ -1,0 +1,27 @@
+{% extends "shopping_cart/shopping_cart_base.html" %}
+
+{% block title %}
+  <title>payment successful</title>
+{% endblock %}
+
+{% block color %}
+  <style media="screen">
+    body{background: #F4F8FB;}
+  </style>
+{% endblock %}
+
+{% block shopping_content %}
+  <div class="container">
+    <div class="jumbotron mt-3">
+      <div class="text-center">
+        <h2 style="color: green;">Payment was successful</h2>
+        <a href="{% url 'shopping_cart:update_records' order_id=order.id %}" class="btn btn-lg btn-secondary">
+          Go to my order page
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
