@@ -71,9 +71,7 @@ class DeleteProduct(LoginRequiredMixin, generic.DeleteView):
 @login_required
 def sell_product(request):
     if request.method == 'POST':
-
         form = forms.ProductCreateForm(request.POST, request.FILES)
-
         if form.is_valid():
             product = form.save(commit=False)
             product.user = request.user
@@ -82,20 +80,18 @@ def sell_product(request):
                 product.ad_image = request.FILES['image']
 
             product.save()
-            messages.error(request, 'Your product has been successfully submitted.')
-            return redirect('home')
+            messages.info(request, 'Your product has been successfully submitted.')
+            return redirect('products:create')
         else:
             messages.error(request, 'Invalid form, please fill the necessary fields')
-            return redirect('create')
-
+            return redirect('products:create')
     else:
         form = forms.ProductCreateForm()
-    return render(request, 'products/product_form.html', {'form': form})
+    return render(request, 'products/product_form.html', {'form': form })
 
 def search_product(request):
     products = models.Product.objects.all()
     query = request.GET.get('search')
 
     results = products.filter(Q(title__icontains=query) | Q(price__icontains=query)).distinct()
-    print('RESULTS', results);
     return render(request, 'products/search.html', {'results': results})

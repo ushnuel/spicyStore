@@ -8,7 +8,8 @@
     background: #f4f8fb;
   }
 </style>
-{% endblock %} {% block product_content %}
+{% endblock %}
+{% block product_content %}
 <div class="container text-center mt-1">
   {% for message in messages %}
   <div class="alert alert-info">
@@ -18,18 +19,23 @@
   {% endfor %}
 </div>
 
+{% if not user.is_superuser %}
+<div class="check-container">
+  <div class="check">
+    <p>You are not authorized to create a product. Only admin can create products. Thanks!</p>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Go to Home</a>
+  </div>
+</div>
+{% else %}
 <div class="container mt-2 product-create-form">
   <div class="product-form">
-    <form
-      action="{% url 'products:create' %}"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      {% csrf_token %} {% bootstrap_form form %}
+    <form action="{% url 'products:create' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
       {{ form.errors }}
       <input type="submit" class="btn btn-block btn-success" value="Publish" />
     </form>
   </div>
 </div>
-
+{% endif %}
 {% endblock %}

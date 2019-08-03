@@ -91,6 +91,22 @@ hr {
   justify-content: center;
   padding: 15px;
 }
+.check-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.check {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Open Sans', cursive;
+  align-items: center;
+  width: 70%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 .product-form {
   width: 60%;
   padding: 15px;
@@ -142,5 +158,8 @@ hr {
   }
   .product-table-container {
     box-shadow: none;
+  }
+  .check {
+    width: 100%;
   }
 }
