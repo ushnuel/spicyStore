@@ -81,7 +81,7 @@ def paystack_payment(request, order_id):
     ref = ''.join(
         [random.choice(
             string.ascii_letters + string.digits) for n in range(16)])
-    callback_url = 'http://localhost:8000/shopping_cart/success/?order_id=' + str(order_id)
+    callback_url = 'https://kemspicy.com/shopping_cart/success/?order_id=' + str(order_id)
 
     response = initialize_paystack(email, amount, ref, callback_url)
     checkout_url = response['data']['authorization_url']
@@ -96,7 +96,7 @@ def flutter_payment(request, order_id):
     email = request.user.email
     amount = order.get_cart_total()
     currency = 'NGN'
-    redirect_url = 'http://localhost:8000/shopping_cart/success/?order_id=' + str(order_id)
+    redirect_url = 'https://kemspicy.com/shopping_cart/success/?order_id=' + str(order_id)
     txref = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(18)])
 
     feedback = flutter_initialize(email, amount, txref, redirect_url, currency)
